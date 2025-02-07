@@ -2,11 +2,12 @@ let gameContainer = document.querySelector(".game-container");
 let scoreContainer = document.querySelector(".score-container");
 
 let foodX, foodY;
-let headX = 12, headY = 12;
-let velocityX = 0, velocityY = 0;
-let snakeBody = [];
+let headX = 12, headY = 12;         // snake head
+let velocityX = 0, velocityY = 0;  //for snake speed
+let snakeBody = [];                //changes length of snake
 let score = 0;
 
+//to generate fruits
 function generateFood() {
     foodX = Math.floor(Math.random() * 25) + 1;
     foodY = Math.floor(Math.random() * 25) + 1;
@@ -16,6 +17,8 @@ function generateFood() {
         }
     }
 }
+
+// on collison with wall or body
 
 function gameOver() {
     headX = 12;
@@ -29,6 +32,7 @@ function gameOver() {
     alert("Game Over");
 }
 
+// render fruits and snake
 
 function renderGame() {
     let updatedGame = `<div class="food" style="grid-area:${foodY}/${foodX};"></div>`;
@@ -66,6 +70,7 @@ function renderGame() {
 generateFood();
 setInterval(renderGame, 150);
 
+//checking key presses
 document.addEventListener("keydown", function (e) {
     let key = e.key;
     if (key == "ArrowUp" || key== "w" && velocityY != 1) {
